@@ -19,10 +19,15 @@
         } else
             $_SESSION["played_games"]++;
 
+        if(!isset($_SESSION["guessed_numbers"]))
+            $_SESSION["guessed_numbers"] = 0;
         const RAND_MIN = 1;
         const RAND_MAX = 20;
         $generated_num = rand(RAND_MIN, RAND_MAX);
         $user_attempt = $_GET["user_num"];
+        
+        if($generated_num == $user_attempt)
+            $_SESSION["guessed_numbers"]++;
     ?>
 
     <h1 class="w-100 p-2 bg-warning text-white text-center">  HAI INDOVINATO?  </h1>
@@ -37,9 +42,10 @@
     </div>
     <hr class="w-50 mx-auto">
     <div class="w-50 mx-auto my-3 fs-5">
-        <p> Partite giocate <?php echo $_SESSION["played_games"] ?> </p>
+        <p> Partite giocate: <?php echo $_SESSION["played_games"] ?> </p>
+        <p> Partite vinte: <?php echo $_SESSION["guessed_numbers"] ?> </p>
     </div>
-    <button class="btn btn-warning d-block mx-auto"> <a href="index.html" class=""> Prova un nuovo tentativo </a> </button>
+    <a href="index.html" class=""><button class="btn btn-warning d-block mx-auto"> Prova un nuovo tentativo </button> </a> 
     
 
 
