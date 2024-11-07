@@ -1,0 +1,21 @@
+#form_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 2rem auto 2rem auto;
+    width: 50%;
+    padding: 1rem;
+}
+
+#num {
+    width: 10rem !important;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#sub_btn {
+    font-size: x-large;
+    margin: 1rem auto 1rem auto;
+    font-weight: bold;
+}

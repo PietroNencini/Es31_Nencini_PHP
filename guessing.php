@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +13,34 @@
 </head>
 <body>
     
-    <h1 class="w-100 p-2 bg-primary text-white text-center">  Cambio valuta  </h1>
+    <?php
+        if(!isset($_SESSION["played_games"])) {
+            $_SESSION["played_games"] = 1;
+        } else
+            $_SESSION["played_games"]++;
 
+        const RAND_MIN = 1;
+        const RAND_MAX = 20;
+        $generated_num = rand(RAND_MIN, RAND_MAX);
+        $user_attempt = $_GET["user_num"];
+    ?>
+
+    <h1 class="w-100 p-2 bg-warning text-white text-center">  HAI INDOVINATO?  </h1>
+
+    <div class="w-50 mx-auto my-3 fs-3">
+        <p> Numero scelto dall'utente: <?php echo $user_attempt ?> </p>
+        <hr>
+        <p> Numero giusto: <?php echo $generated_num ?> </p>
+        <?php 
+            echo $generated_num == $user_attempt ? "<p style='color: green;'> HAI VINTO! - bravo </p>" : "<p style='color: red;'> HAI PERSO! - sei scarso </p>"; 
+        ?>
+    </div>
+    <hr class="w-50 mx-auto">
+    <div class="w-50 mx-auto my-3 fs-5">
+        <p> Partite giocate <?php echo $_SESSION["played_games"] ?> </p>
+    </div>
+    <button class="btn btn-warning d-block mx-auto"> <a href="index.html" class=""> Prova un nuovo tentativo </a> </button>
     
-
 
 
 
